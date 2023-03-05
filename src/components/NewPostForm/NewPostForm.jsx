@@ -2,9 +2,7 @@ import "./NewPostForm.css";
 
 import {useDispatch} from "react-redux";
 import {addPost} from "../../features/posts/postsSlice";
-import {useState} from "react";
-
-import {nanoid} from "@reduxjs/toolkit";
+import {useEffect, useState} from "react";
 
 const defaultFormFields = {
     title: "",
@@ -14,10 +12,15 @@ const defaultFormFields = {
 
 const NewPostForm = () => {
 
+    const [canPost, setCanPost] = useState(false);
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {title, author, content} = formFields;
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setCanPost(title && author && content);
+    }, [author, content, title]);
 
     const resetFormFields = () => setFormFields(defaultFormFields);
 
@@ -33,9 +36,7 @@ const NewPostForm = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-
         dispatch(addPost(formFields));
-
         resetFormFields();
     }
 
@@ -58,7 +59,7 @@ const NewPostForm = () => {
                 <textarea rows="5" name="content" value={content} onChange={handleFieldChange} required />
             </label>
 
-            <button type="submit">Save post</button>
+            <button type="submit" disabled={!canPost}>POST</button>
         </form>
     );
 }

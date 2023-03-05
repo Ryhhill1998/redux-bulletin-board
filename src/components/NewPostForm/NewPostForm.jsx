@@ -17,6 +17,8 @@ const NewPostForm = () => {
 
     const dispatch = useDispatch();
 
+    const resetFormFields = () => setFormFields(defaultFormFields);
+
     const handleFieldChange = ({target}) => {
         const {name, value} = target;
 
@@ -29,13 +31,13 @@ const NewPostForm = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        console.log(formFields)
-
         dispatch(addPost({
             title : title,
             author: author,
             content: content
         }));
+
+        resetFormFields();
     }
 
     return (

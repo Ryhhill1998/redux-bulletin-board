@@ -13,10 +13,11 @@ input, textarea, button {
     border-radius: 10px;
     border: none;
     margin-top: 0.5em;
+    padding: 0.5em;
+    font-family: inherit;
 }
 
 button {
     cursor: pointer;
     max-width: 100px;
-    padding: 0.25em;
 }

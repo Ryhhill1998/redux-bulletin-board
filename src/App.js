@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 
 const App = () => {
 
-    const posts = useSelector(state => state.posts.allPosts);
+    const posts = [...useSelector(state => state.posts)];
 
     return (
         <div className="App">

@@ -4,6 +4,8 @@ import {useDispatch} from "react-redux";
 import {addPost} from "../../features/posts/postsSlice";
 import {useState} from "react";
 
+import {nanoid} from "@reduxjs/toolkit";
+
 const defaultFormFields = {
     title: "",
     author: "",
@@ -22,20 +24,17 @@ const NewPostForm = () => {
     const handleFieldChange = ({target}) => {
         const {name, value} = target;
 
-        const updatedFields = {...formFields};
-        updatedFields[name] = value;
-
-        setFormFields(updatedFields);
+        setFormFields(formFields => {
+            const updatedFields = {...formFields};
+            updatedFields[name] = value;
+            return updatedFields;
+        });
     }
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        dispatch(addPost({
-            title : title,
-            author: author,
-            content: content
-        }));
+        dispatch(addPost(formFields));
 
         resetFormFields();
     }

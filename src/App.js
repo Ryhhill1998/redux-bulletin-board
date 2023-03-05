@@ -2,15 +2,12 @@ import './App.css';
 import NewPostForm from "./components/NewPostForm/NewPostForm";
 import Post from "./components/Post/Post";
 
-const posts = [
-    {
-        title : "First post",
-        author: "Jeff",
-        content: "This is my first post"
-    }
-];
+import {useSelector} from "react-redux";
 
 const App = () => {
+
+    const posts = useSelector(state => state.posts.allPosts);
+
     return (
         <div className="App">
             <main>

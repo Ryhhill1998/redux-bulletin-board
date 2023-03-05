@@ -1,30 +1,33 @@
 import './App.css';
+import NewPostForm from "./components/NewPostForm/NewPostForm";
+import Post from "./components/Post/Post";
+
+const posts = [
+    {
+        title : "First post",
+        author: "Jeff",
+        content: "This is my first post"
+    }
+];
 
 const App = () => {
     return (
         <div className="App">
-            <h1>Bulletin Board</h1>
+            <main>
+                <h1>Bulletin Board</h1>
 
-            <form>
-                <h2>Add new post</h2>
+                <section>
+                    <NewPostForm />
+                </section>
 
-                <label>
-                    Post title
-                    <input type="text" required />
-                </label>
+                <section>
+                    <h2>Posts</h2>
 
-                <label>
-                    Author
-                    <input type="text" required />
-                </label>
-
-                <label>
-                    Post title
-                    <textarea rows="5" required />
-                </label>
-
-                <button>Save post</button>
-            </form>
+                    {posts.map((post, i) => (
+                        <Post key={i} {...post} />
+                    ))}
+                </section>
+            </main>
         </div>
     );
 }

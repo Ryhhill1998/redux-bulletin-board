@@ -1,0 +1,22 @@
+.post-container {
+    border: solid 1px white;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+h3 {
+    margin: 0;
+}
+
+.post-container .post-content {
+    font-size: 1.1rem;
+}
+
+.post-container .post-author {
+    font-size: 0.9rem;
+}
+
+.reactions-container {
+    display: flex;
+    gap: 1em;
+}

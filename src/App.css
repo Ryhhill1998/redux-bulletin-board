@@ -1,20 +1,14 @@
 html {
-    background-color: lightgrey;
+    background-color: #605f5f;
+    color: white;
+}
+
+main {
+    width: 90%;
+    max-width: 450px;
+    margin: 0 auto;
 }
 
 h1 {
     text-align: center;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    margin: 0 auto;
-    gap: 1em;
-}
-
-label {
-    display: flex;
-    flex-direction: column;
 }

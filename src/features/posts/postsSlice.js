@@ -6,24 +6,30 @@ const initialState = [
         title : "First post",
         author: "Jeff",
         content: "This is my first post",
-        likes: 0,
-        dislikes: 0
+        reactions: {
+            like: 0,
+            dislike: 0
+        }
     },
     {
         id: 2,
         title : "Where is my ceremonial robe?",
         author: "King Leon",
         content: "Someone, please help me! I seem to have misplaced my glorious ceremonial robe!",
-        likes: 0,
-        dislikes: 0
+        reactions: {
+            like: 0,
+            dislike: 3
+        }
     },
     {
         id: 3,
         title : "Second post",
         author: "Jeff",
         content: "This is my second post",
-        likes: 0,
-        dislikes: 0
+        reactions: {
+            like: 0,
+            dislike: 0
+        }
     }
 ];
 
@@ -35,13 +41,20 @@ export const postsSlice = createSlice({
             state.push({
                 id: nanoid(),
                 ...action.payload,
-                likes: 0,
-                dislikes: 0
+                reactions: {
+                    like: 0,
+                    dislike: 0
+                }
             });
+        },
+        addPostReaction: (state, action) => {
+            const {id, reaction} = action.payload;
+            const foundPost = state.find(post => post.id === id);
+            foundPost.reactions[reaction] += 1;
         }
     }
 });
 
 export const selectAllPosts = state => state.posts;
-export const {addPost} = postsSlice.actions;
+export const {addPost, addPostReaction} = postsSlice.actions;
 export default postsSlice.reducer;

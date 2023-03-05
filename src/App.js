@@ -7,7 +7,8 @@ import {useSelector} from "react-redux";
 
 const App = () => {
 
-    const posts = useSelector(selectAllPosts);
+    const posts = [...useSelector(selectAllPosts)];
+    posts.reverse();
 
     return (
         <div className="App">

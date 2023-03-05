@@ -1,7 +1,13 @@
 import "./Post.css";
-import Reaction from "../Reaction/Reaction";
+import ReactionButton from "../ReactionButton/ReactionButton";
 
-const Post = ({title, content, author}) => {
+const Post = ({id, title, content, author, reactions}) => {
+
+    const reactionsData = [
+        {name: "like", emoji: "👍", votes: reactions["like"]},
+        {name: "dislike", emoji: "👎", votes: reactions["dislike"]},
+    ];
+
     return (
         <div className="post-container">
             <h3>{title}</h3>
@@ -9,8 +15,9 @@ const Post = ({title, content, author}) => {
             <p className="post-author">by {author}</p>
 
             <div className="reactions-container">
-                <Reaction emoji="👍" />
-                <Reaction emoji="👎" />
+                {reactionsData.map((reaction, i) => (
+                    <ReactionButton key={id + i} id={id} {...reaction} />
+                ))}
             </div>
         </div>
     );

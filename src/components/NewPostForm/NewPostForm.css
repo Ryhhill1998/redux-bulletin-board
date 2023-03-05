@@ -8,3 +8,15 @@ label {
     display: flex;
     flex-direction: column;
 }
+
+input, textarea, button {
+    border-radius: 10px;
+    border: none;
+    margin-top: 0.5em;
+}
+
+button {
+    cursor: pointer;
+    max-width: 100px;
+    padding: 0.25em;
+}

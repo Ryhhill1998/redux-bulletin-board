@@ -12,3 +12,6 @@ main {
 h1 {
     text-align: center;
 }
+section {
+    margin-bottom: 4em;
+}

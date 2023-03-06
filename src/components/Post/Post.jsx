@@ -16,7 +16,7 @@ const Post = ({id, title, content, author, reactions}) => {
 
             <div className="reactions-container">
                 {reactionsData.map((reaction, i) => (
-                    <ReactionButton key={id + i} id={id} {...reaction} />
+                    <ReactionButton key={reaction.name + i} id={id} {...reaction} />
                 ))}
             </div>
         </div>
